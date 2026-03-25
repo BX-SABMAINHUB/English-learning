@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiction Express • Aprende Inglés</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --tw-color-primary: #4f46e5;
+        }
+        
+        .tail-container * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .logo-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .screen {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .book-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 25px 25px 0 -10px rgb(79 70 229);
+        }
+        
+        .page {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        
+        .progress-bar {
+            transition: width 0.4s ease;
+        }
+    </style>
+</head>
+<body class="tail-container bg-gradient-to-br from-indigo-50 via-white to-violet-50 min-h-screen">
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="screen min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-md w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-10 text-white text-center">
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-4xl shadow-inner">
+                        📖
+                    </div>
+                </div>
+                <h1 class="logo-font text-5xl tracking-tight">Fiction Express</h1>
+                <p class="text-indigo-100 mt-2 text-lg">Tu aventura en inglés empieza aquí</p>
+                <div class="mt-6 inline-flex items-center gap-2 bg-white/10 px-4 py-1 rounded-full text-sm">
+                    <i class="fas fa-book-open"></i>
+                    Libros • Quizzes • Actividades
+                </div>
+            </div>
+
+            <div class="p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Iniciar sesión</h2>
+                
+                <form id="login-form" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Usuario</label>
+                        <div class="relative">
+                            <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input 
+                                type="text" 
+                                id="username"
+                                value="estudiante"
+                                class="w-full pl-11 pr-4 py-4 border border-gray-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-200 rounded-2xl outline-none text-lg"
+                                placeholder="Tu nombre de usuario">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                        <div class="relative">
+                            <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input 
+                                type="password" 
+                                id="password"
+                                value="ingles123"
+                                class="w-full pl-11 pr-4 py-4 border border-gray-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-200 rounded-2xl outline-none text-lg"
+                                placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 accent-indigo-600" checked>
+                            <span class="text-gray-600">Recordarme</span>
+                        </label>
+                        <a href="#" onclick="fakeForgotPassword()" class="text-indigo-600 hover:underline">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button 
+                        type="submit"
+                        class="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors text-white font-semibold py-4 rounded-2xl text-xl shadow-lg shadow-indigo-300 flex items-center justify-center gap-3">
+                        <span>Iniciar sesión</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center text-gray-500 text-sm">
+                    Demo • Usuario: <span class="font-mono bg-gray-100 px-2 py-px rounded">estudiante</span> • Contraseña: <span class="font-mono bg-gray-100 px-2 py-px rounded">ingles123</span>
+                </div>
+                
+                <div class="text-xs text-center text-gray-400 mt-6">
+                    Esta es una copia casi idéntica de Fiction Express<br>
+                    con login propio, libros de 10 páginas, quiz y 5 actividades por nivel
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP -->
+    <div id="app-screen" class="screen hidden min-h-screen">
+        <!-- NAVBAR -->
+        <nav class="bg-white border-b sticky top-0 z-50 shadow-sm">
+            <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl">📖</div>
+                    <h1 class="logo-font text-3xl tracking-tighter text-gray-800">Fiction Express</h1>
+                </div>
+                
+                <div class="flex items-center gap-8">
+                    <!-- User info -->
+                    <div class="flex items-center gap-3">
+                        <div id="user-avatar" class="w-9 h-9 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center text-xl">👦</div>
+                        <div>
+                            <p id="user-name-display" class="font-semibold text-gray-800"></p>
+                            <p id="user-level-display" class="text-xs text-gray-500 -mt-0.5"></p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="logout()" 
+                            class="flex items-center gap-2 text-gray-500 hover:text-red-600 transition-colors">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="text-sm font-medium">Cerrar sesión</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Level selector -->
+            <div class="max-w-screen-2xl mx-auto px-8 pb-4">
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-500 mb-2">
+                    <i class="fas fa-layer-group"></i>
+                    <span>ELIGE TU NIVEL DE INGLÉS</span>
+                </div>
+                <div id="level-buttons" class="flex gap-3 flex-wrap"></div>
+            </div>
+        </nav>
+
+        <div class="max-w-screen-2xl mx-auto px-8 py-8">
+            
+            <!-- DASHBOARD HEADER -->
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 id="dashboard-title" class="text-4xl font-semibold text-gray-800">¡Bienvenido de vuelta!</h2>
+                    <p id="dashboard-subtitle" class="text-gray-500 mt-1">¿Qué libro vas a leer hoy?</p>
+                </div>
+                
+                <div onclick="showMyProgress()" 
+                     class="flex items-center gap-2 bg-white px-6 py-3 rounded-3xl shadow-sm cursor-pointer hover:shadow-md transition-all">
+                    <i class="fas fa-chart-bar text-indigo-600"></i>
+                    <div class="text-sm">
+                        <span class="font-semibold">Mi progreso</span>
+                        <span id="progress-count" class="ml-2 text-xs bg-indigo-100 text-indigo-600 px-3 py-px rounded-2xl">0 libros completados</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOKS GRID -->
+            <div id="books-section">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 id="books-level-title" class="text-2xl font-semibold flex items-center gap-2"></h3>
+                    <button onclick="goBackToDashboard()" 
+                            class="text-indigo-600 hover:text-indigo-700 flex items-center gap-1 text-sm font-medium">
+                        <i class="fas fa-arrow-left"></i> Cambiar nivel
+                    </button>
+                </div>
+                
+                <div id="books-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOK READER SCREEN -->
+    <div id="reader-screen" class="screen hidden fixed inset-0 bg-gradient-to-br from-indigo-950 to-violet-950 z-[100] flex items-center justify-center p-6">
+        <div class="max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl">
+            <!-- Reader header -->
+            <div class="px-8 py-5 bg-gray-50 border-b flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button onclick="exitReader()" 
+                            class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 rounded-2xl hover:bg-gray-100">
+                        <i class="fas fa-arrow-left text-xl"></i>
+                    </button>
+                    <div>
+                        <h3 id="reader-book-title" class="font-semibold text-xl"></h3>
+                        <p id="reader-book-author" class="text-gray-500 text-sm"></p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-8">
+                    <!-- Progress -->
+                    <div class="flex items-center gap-3">
+                        <div class="text-sm font-medium text-gray-400">Página</div>
+                        <div id="page-counter" class="font-mono text-4xl font-semibold text-indigo-600 tabular-nums">01</div>
+                        <div class="text-gray-300">/ 10</div>
+                    </div>
+                    
+                    <div class="w-64 h-2.5 bg-gray-200 rounded-3xl overflow-hidden">
+                        <div id="page-progress" class="progress-bar h-full bg-gradient-to-r from-indigo-500 to-violet-500 w-1/10 rounded-3xl"></div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2 text-emerald-600 text-sm font-medium">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="reading-status">Leyendo</span>
+                </div>
+            </div>
+            
+            <!-- Page content -->
+            <div class="p-12 min-h-[520px] page bg-white mx-8 my-8 rounded-3xl border border-gray-100">
+                <div id="page-text" class="prose prose-lg text-gray-800 max-w-none leading-relaxed text-[1.1rem] font-light">
+                    <!-- JS injected -->
+                </div>
+            </div>
+            
+            <!-- Footer controls -->
+            <div class="px-8 py-6 bg-white border-t flex items-center justify-between">
+                <button onclick="prevPage()" 
+                        id="prev-btn"
+                        class="flex items-center gap-2 px-8 py-4 border border-gray-300 hover:border-gray-400 rounded-3xl text-gray-700 font-medium transition-all">
+                    <i class="fas fa-chevron-left"></i>
+                    Página anterior
+                </button>
+                
+                <button onclick="nextPage()" 
+                        id="next-btn"
+                        class="flex items-center gap-2 px-10 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-3xl font-semibold transition-all shadow-lg">
+                    Página siguiente
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <button onclick="finishBook()" 
+                        id="finish-book-btn"
+                        class="hidden items-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-3xl font-semibold transition-all">
+                    <i class="fas fa-flag-checkered"></i>
+                    TERMINAR LIBRO + QUIZ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ SCREEN -->
+    <div id="quiz-screen" class="screen hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[110] p-4">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden">
+            <div class="px-8 pt-8 pb-4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-semibold">¡Quiz del libro!</h2>
+                    <div onclick="exitQuiz()" class="cursor-pointer text-gray-400 hover:text-gray-600"><i class="fas fa-times text-3xl"></i></div>
+                </div>
+                <p id="quiz-book-name" class="text-gray-500"></p>
+            </div>
+            
+            <div id="quiz-questions" class="px-8 space-y-8 max-h-[520px] overflow-y-auto pb-8">
+                <!-- JS injected questions -->
+            </div>
+            
+            <div class="px-8 py-6 border-t flex items-center justify-between bg-gray-50">
+                <div id="quiz-score-preview" class="text-sm font-medium text-gray-400"></div>
+                <button onclick="submitQuiz()" 
+                        class="px-10 py-4 bg-violet-600 text-white font-semibold rounded-3xl flex items-center gap-3 hover:bg-violet-700">
+                    ENVIAR RESPUESTAS
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACTIVITIES SCREEN -->
+    <div id="activities-screen" class="screen hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[120] p-4">
+        <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl max-h-[90vh] flex flex-col">
+            <div class="px-8 py-6 border-b flex items-center justify-between">
+                <div>
+                    <h2 class="text-3xl font-semibold">5 Actividades del libro</h2>
+                    <p id="activity-book-title" class="text-gray-500"></p>
+                </div>
+                <button onclick="exitActivities()" class="text-gray-400 hover:text-red-500 text-3xl leading-none">✕</button>
+            </div>
+            
+            <div id="activities-content" class="flex-1 p-8 overflow-y-auto space-y-8">
+                <!-- JS injected 5 activities -->
+            </div>
+            
+            <div class="border-t px-8 py-6 flex items-center justify-between bg-gray-50 rounded-b-3xl">
+                <div class="flex items-center gap-2 text-emerald-600">
+                    <i class="fas fa-medal"></i>
+                    <span id="activities-completed-text" class="font-medium">0 de 5 completadas</span>
+                </div>
+                <button onclick="finishAllActivities()" 
+                        id="finish-activities-btn"
+                        class="hidden px-8 py-3 bg-gradient-to-r from-emerald-400 to-teal-500 text-white font-semibold rounded-3xl">
+                    ¡FELICIDADES! Volver al inicio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROGRESS MODAL -->
+    <div onclick="if(event.target.id === 'progress-modal')hideProgress()" 
+         id="progress-modal" class="hidden fixed inset-0 bg-black/60 z-[200] flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white rounded-3xl max-w-lg w-full mx-4 p-8">
+            <h3 class="text-2xl font-semibold mb-6">Tu progreso en Fiction Express</h3>
+            <div id="progress-list" class="space-y-4">
+                <!-- JS injected -->
+            </div>
+            <button onclick="hideProgress()" 
+                    class="mt-8 w-full py-4 text-gray-400 hover:text-gray-600 font-medium">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // =============== TAILWIND INIT ===============
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        configUser: userConfig,
+                        theme: {
+                            extend: {
+                                colors: {
+                                    primary: '#4f46e5'
+                                }
+                            }
+                        }
+                    }
+                },
+                theme(userTheme = {}) {
+                    return {
+                        ...this.defaultTheme(),
+                        ...userTheme,
+                    }
+                },
+                defaultTheme() {
+                    return {
+                        colors: {
+                            primary: '#4f46e5'
+                        }
+                    }
+                }
+            }
+        }
+
+        // =============== GLOBAL DATA ===============
+        let currentUser = null
+        let selectedLevel = null
+        let currentBookIndex = null
+        let currentPageIndex = 1
+        let quizAnswers = []
+        let completedBooks = [] // stored in localStorage
+        let currentActivitiesCompleted = 0
+
+        const levels = [
+            {
+                id: "ket",
+                name: "KET (A2)",
+                label: "Principiante",
+                color: "indigo"
+            },
+            {
+                id: "pet",
+                name: "PET (B1)",
+                label: "Intermedio",
+                color: "violet"
+            },
+            {
+                id: "b2",
+                name: "B2 (FCE)",
+                label: "Avanzado",
+                color: "teal"
+            }
+        ]
+
+        // Books database (2 libros por nivel, 10 páginas reales cada uno)
+        const booksDB = {
+            ket: [
+                {
+                    id: 1,
+                    title: "The Lost Puppy",
+                    author: "Emma Roberts",
+                    description: "Max el cachorro se pierde y vive una gran aventura.",
+                    level: "ket",
+                    pages: [
+                        "Page 1: Max was a happy little puppy. He lived with Anna in a pretty house with a big garden.",
+                        "Page 2: Every morning Anna played with Max before she went to school.",
+                        "Page 3: One day Anna forgot to close the gate. Max ran into the street.",
+                        "Page 4: Max was scared. He did not know where he was.",
+                        "Page 5: He saw a big park with many trees and flowers.",
+                        "Page 6: A friendly boy gave Max some water and a biscuit.",
+                        "Page 7: The boy took Max to the police station.",
+                        "Page 8: Anna was very sad at home. She looked for Max everywhere.",
+                        "Page 9: The police called Anna! Max was safe.",
+                        "Page 10: Anna and Max hugged. They were happy again. The end!"
+                    ],
+                    quiz: [
+                        { q: "What is the name of the puppy?", options: ["Max", "Anna", "Tom"], correct: 0 },
+                        { q: "Where did Max live?", options: ["In a big city", "In a pretty house with a garden", "On a farm"], correct: 1 },
+                        { q: "Why did Max run away?", options: ["Anna forgot to close the gate", "He was hungry", "He wanted to play"], correct: 0 },
+                        { q: "Who helped Max in the park?", options: ["A friendly boy", "A big dog", "Anna"], correct: 0 },
+                        { q: "How did the story end?", options: ["Max stayed lost", "Anna and Max hugged and were happy", "Max went to live in the park"], correct: 1 }
+                    ],
+                    activities: [
+                        {
+                            title: "1. True or False",
+                            type: "truefalse",
+                            items: [
+                                { statement: "Max lived with Anna.", answer: true },
+                                { statement: "Anna closed the gate.", answer: false },
+                                { statement: "Max saw a park.", answer: true }
+                            ]
+                        },
+                        {
+                            title: "2. Vocabulary match",
+                            type: "match",
+                            pairs: [
+                                { word: "happy", def: "feeling good" },
+                                { word: "scared", def: "afraid" },
+                                { word: "friendly", def: "nice to others" }
+                            ]
+                        },
+                        {
+                            title: "3. Fill the gaps",
+                            type: "fill",
+                            sentence: "Max was a _____ little puppy.",
+                            options: ["happy", "sad", "big"],
+                            correct: "happy"
+                        },
+                        {
+                            title: "4. Order the story",
+                            type: "order",
+                            events: ["Anna forgot the gate", "Max ran into the street", "A boy helped Max", "Anna hugged Max"],
+                            correctOrder: [0, 1, 2, 3]
+                        },
+                        {
+                            title: "5. Write a sentence",
+                            type: "write",
+                            prompt: "Write one sentence about Max using the word 'happy'."
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "The Magic Key",
+                    author: "Liam Parker",
+                    description: "Sara encuentra una llave mágica y abre una puerta secreta.",
+                    level: "ket",
+                    pages: [
+                        "Page 1: Sara was a curious girl. She loved exploring the old house.",
+                        "Page 2: One afternoon she found a shiny golden key under the stairs.",
+                        "Page 3: The key was very small and had a star on it.",
+                        "Page 4: Sara tried the key on every door in the house.",
+                        "Page 5: Suddenly a small door in the garden opened!",
+                        "Page 6: Behind the door was a beautiful magic garden.",
+                        "Page 7: Flowers could talk and birds sang songs.",
+                        "Page 8: Sara played with the magic animals all day.",
+                        "Page 9: When the sun went down, Sara went back home.",
+                        "Page 10: She kept the magic key safe in her pocket. The end!"
+                    ],
+                    quiz: [
+                        { q: "What did Sara find?", options: ["A golden key", "A book", "A dog"], correct: 0 },
+                        { q: "Where was the magic door?", options: ["In the garden", "In the kitchen", "In the attic"], correct: 0 },
+                        { q: "What could the flowers do?", options: ["Talk", "Fly", "Sing"], correct: 0 },
+                        { q: "What did Sara keep safe?", options: ["The magic key", "A flower", "A bird"], correct: 0 },
+                        { q: "How did Sara feel?", options: ["Curious and happy", "Sad", "Angry"], correct: 0 }
+                    ],
+                    activities: [
+                        { title: "1. True or False", type: "truefalse", items: [{ statement: "Sara was curious.", answer: true }, { statement: "The key was big.", answer: false }, { statement: "The garden was magic.", answer: true }] },
+                        { title: "2. Vocabulary match", type: "match", pairs: [{ word: "curious", def: "wants to know everything" }, { word: "shiny", def: "bright and clean" }, { word: "magic", def: "not normal" }] },
+                        { title: "3. Fill the gaps", type: "fill", sentence: "Sara found a _____ golden key.", options: ["shiny", "black", "big"], correct: "shiny" },
+                        { title: "4. Order the story", type: "order", events: ["Sara found the key", "She opened the door", "She played in the garden", "She went home"], correctOrder: [0, 1, 2, 3] },
+                        { title: "5. Write a sentence", type: "write", prompt: "Write one sentence about the magic garden." }
+                    ]
+                }
+            ],
+            pet: [
+                {
+                    id: 3,
+                    title: "The Secret Island",
+                    author: "Olivia Green",
+                    description: "Cuatro amigos descubren una isla secreta y resuelven un misterio.",
+                    level: "pet",
+                    pages: [
+                        "Page 1: Four friends – Alex, Mia, Leo and Emma – found an old map in their school library.",
+                        "Page 2: The map showed a secret island that nobody had visited for many years.",
+                        "Page 3: They decided to go there by boat on Saturday morning.",
+                        "Page 4: When they arrived, they discovered beautiful caves and a hidden waterfall.",
+                        "Page 5: Inside one cave they found an old chest with a mysterious letter.",
+                        "Page 6: The letter said that the island belonged to a famous explorer.",
+                        "Page 7: The friends worked together to solve the puzzles in the letter.",
+                        "Page 8: They found a beautiful necklace made of pearls and gold.",
+                        "Page 9: They decided to leave the treasure where they found it.",
+                        "Page 10: The four friends promised to keep the island secret forever. The end!"
+                    ],
+                    quiz: [
+                        { q: "How many friends went to the island?", options: ["Three", "Four", "Five"], correct: 1 },
+                        { q: "What did they find in the library?", options: ["An old map", "A treasure", "A boat"], correct: 0 },
+                        { q: "What was inside the cave?", options: ["A chest with a letter", "A waterfall", "A boat"], correct: 0 },
+                        { q: "What did they decide to do with the treasure?", options: ["Take it home", "Leave it on the island", "Give it to the school"], correct: 1 },
+                        { q: "The island was...", options: ["Secret", "Very crowded", "Dangerous"], correct: 0 }
+                    ],
+                    activities: [
+                        { title: "1. True or False", type: "truefalse", items: [{ statement: "The friends found the map at school.", answer: true }, { statement: "They went by plane.", answer: false }, { statement: "They kept the treasure.", answer: false }] },
+                        { title: "2. Vocabulary match", type: "match", pairs: [{ word: "mystery", def: "something unknown" }, { word: "discover", def: "find something new" }, { word: "promise", def: "say you will do something" }] },
+                        { title: "3. Fill the gaps", type: "fill", sentence: "They found an old _____ with a mysterious letter.", options: ["chest", "book", "boat"], correct: "chest" },
+                        { title: "4. Order the story", type: "order", events: ["Found the map", "Went by boat", "Discovered the chest", "Promised to keep the secret"], correctOrder: [0, 1, 2, 3] },
+                        { title: "5. Write a sentence", type: "write", prompt: "Write one sentence about why the island should stay secret." }
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "The Flying Robot",
+                    author: "Noah Bennett",
+                    description: "Un niño construye un robot que puede volar y vive una aventura increíble.",
+                    level: "pet",
+                    pages: [
+                        "Page 1: Ben loved building things. One day he decided to make a robot.",
+                        "Page 2: He used old boxes, wires and a small motor from his father’s garage.",
+                        "Page 3: When he pressed the button, the robot started to fly!",
+                        "Page 4: The robot’s name was Zip and he could speak simple sentences.",
+                        "Page 5: Zip and Ben flew over the city and saw the river and the park.",
+                        "Page 6: They helped a lost cat climb down from a tall tree.",
+                        "Page 7: Later they stopped a thief who was stealing bikes.",
+                        "Page 8: Everyone in town thanked Ben and Zip for being heroes.",
+                        "Page 9: At night Zip returned to Ben’s bedroom to recharge.",
+                        "Page 10: Ben was very proud of his flying friend. The end!"
+                    ],
+                    quiz: [
+                        { q: "What was the robot’s name?", options: ["Zip", "Max", "Bot"], correct: 0 },
+                        { q: "How did the robot fly?", options: ["With wings", "With a small motor", "By magic"], correct: 1 },
+                        { q: "Who did they help first?", options: ["A lost cat", "A thief", "The police"], correct: 0 },
+                        { q: "What did Zip do at night?", options: ["Recharge", "Sleep", "Fly alone"], correct: 0 },
+                        { q: "Ben felt...", options: ["Proud", "Scared", "Bored"], correct: 0 }
+                    ],
+                    activities: [
+                        { title: "1. True or False", type: "truefalse", items: [{ statement: "Ben built the robot.", answer: true }, { statement: "Zip could not speak.", answer: false }, { statement: "They stopped a thief.", answer: true }] },
+                        { title: "2. Vocabulary match", type: "match", pairs: [{ word: "build", def: "make something" }, { word: "fly", def: "move in the air" }, { word: "hero", def: "person who helps others" }] },
+                        { title: "3. Fill the gaps", type: "fill", sentence: "The robot started to _____ when Ben pressed the button.", options: ["fly", "run", "talk"], correct: "fly" },
+                        { title: "4. Order the story", type: "order", events: ["Ben built the robot", "Zip flew over the city", "They helped a cat", "Everyone thanked them"], correctOrder: [0, 1, 2, 3] },
+                        { title: "5. Write a sentence", type: "write", prompt: "Write one sentence about what you would do with a flying robot." }
+                    ]
+                }
+            ],
+            b2: [
+                {
+                    id: 5,
+                    title: "The Time Traveler",
+                    author: "Isabella Hart",
+                    description: "Una científica viaja al pasado y debe decidir si cambia la historia.",
+                    level: "b2",
+                    pages: [
+                        "Page 1: Dr. Elena Voss had spent ten years perfecting her time machine.",
+                        "Page 2: On the morning of the test, she stepped into the capsule and set the date to 1850.",
+                        "Page 3: When the machine stopped, she found herself in Victorian London during a thick fog.",
+                        "Page 4: She met a young inventor who was working on an important scientific discovery.",
+                        "Page 5: Elena realised that if she warned him about a future accident, history would change forever.",
+                        "Page 6: She struggled with the moral dilemma of whether knowledge from the future should be shared.",
+                        "Page 7: In the end she chose not to interfere and simply observed the events.",
+                        "Page 8: Returning to the present, she discovered that the timeline had remained exactly the same.",
+                        "Page 9: She smiled, knowing that some things are better left unchanged.",
+                        "Page 10: The time traveler had learned the most valuable lesson of all. The end!"
+                    ],
+                    quiz: [
+                        { q: "What year did Elena travel to?", options: ["2025", "1850", "1900"], correct: 1 },
+                        { q: "What did she find in London?", options: ["A thick fog and a young inventor", "A modern city", "A spaceship"], correct: 0 },
+                        { q: "What was her moral dilemma?", options: ["Whether to change history or not", "Whether to stay in the past", "Whether to destroy the machine"], correct: 0 },
+                        { q: "What did she finally decide?", options: ["Not to interfere", "To give the inventor information", "To stay forever"], correct: 0 },
+                        { q: "The timeline remained...", options: ["Exactly the same", "Completely different", "Partially changed"], correct: 0 }
+                    ],
+                    activities: [
+                        { title: "1. True or False", type: "truefalse", items: [{ statement: "Elena had spent ten years on the machine.", answer: true }, { statement: "She changed the past.", answer: false }, { statement: "She learned an important lesson.", answer: true }] },
+                        { title: "2. Vocabulary match", type: "match", pairs: [{ word: "dilemma", def: "difficult decision" }, { word: "interfere", def: "get involved when not wanted" }, { word: "timeline", def: "sequence of events" }] },
+                        { title: "3. Fill the gaps", type: "fill", sentence: "She struggled with the moral _____ of changing history.", options: ["dilemma", "machine", "fog"], correct: "dilemma" },
+                        { title: "4. Order the story", type: "order", events: ["Built the machine", "Travelled to 1850", "Met the inventor", "Chose not to interfere"], correctOrder: [0, 1, 2, 3] },
+                        { title: "5. Write a sentence", type: "write", prompt: "Write one sentence explaining why changing the past could be dangerous." }
+                    ]
+                },
+                {
+                    id: 6,
+                    title: "The Last Library",
+                    author: "Marcus Reed",
+                    description: "En un futuro donde los libros son ilegales, un chico descubre la última biblioteca.",
+                    level: "b2",
+                    pages: [
+                        "Page 1: In the year 2147, all physical books had been banned by the Global Council.",
+                        "Page 2: People only read digital screens that told them exactly what to think.",
+                        "Page 3: Fourteen-year-old Kai had always felt something was missing in his life.",
+                        "Page 4: One stormy night he followed an old man into an abandoned subway tunnel.",
+                        "Page 5: Behind a hidden door he discovered thousands of real paper books.",
+                        "Page 6: The old librarian explained that these books contained the true history of humanity.",
+                        "Page 7: Kai began reading secretly every night, learning about freedom and imagination.",
+                        "Page 8: When the Council guards came close, the librarian gave Kai one special book to protect.",
+                        "Page 9: Kai promised to keep the last library alive for future generations.",
+                        "Page 10: The boy who once had nothing now carried the entire world in his hands. The end!"
+                    ],
+                    quiz: [
+                        { q: "In what year is the story set?", options: ["2025", "2147", "1999"], correct: 1 },
+                        { q: "What had been banned?", options: ["Physical books", "Digital screens", "Schools"], correct: 0 },
+                        { q: "Who showed Kai the library?", options: ["An old man / librarian", "His teacher", "The Council"], correct: 0 },
+                        { q: "What did Kai learn from the books?", options: ["Freedom and imagination", "How to use screens", "How to obey rules"], correct: 0 },
+                        { q: "What did Kai promise to do?", options: ["Protect the last library", "Destroy the books", "Tell the Council"], correct: 0 }
+                    ],
+                    activities: [
+                        { title: "1. True or False", type: "truefalse", items: [{ statement: "Books were banned in 2147.", answer: true }, { statement: "Kai read the books openly.", answer: false }, { statement: "The library contained true history.", answer: true }] },
+                        { title: "2. Vocabulary match", type: "match", pairs: [{ word: "banned", def: "forbidden by law" }, { word: "imagination", def: "ability to create ideas" }, { word: "protect", def: "keep safe" }] },
+                        { title: "3. Fill the gaps", type: "fill", sentence: "All physical books had been _____ by the Global Council.", options: ["banned", "sold", "read"], correct: "banned" },
+                        { title: "4. Order the story", type: "order", events: ["Books banned", "Kai followed the old man", "Discovered the library", "Promised to protect it"], correctOrder: [0, 1, 2, 3] },
+                        { title: "5. Write a sentence", type: "write", prompt: "Write one sentence about why books are important for imagination." }
+                    ]
+                }
+            ]
+        }
+
+        // =============== HELPER FUNCTIONS ===============
+        function saveProgress() {
+            localStorage.setItem('fictionExpressProgress', JSON.stringify(completedBooks))
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('fictionExpressProgress')
+            if (saved) completedBooks = JSON.parse(saved)
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'))
+            const screen = document.getElementById(screenId)
+            if (screen) screen.classList.remove('hidden')
+        }
+
+        function renderLevelButtons() {
+            const container = document.getElementById('level-buttons')
+            container.innerHTML = ''
+            
+            levels.forEach(level => {
+                const isSelected = selectedLevel && selectedLevel.id === level.id
+                
+                const btn = document.createElement('button')
+                btn.className = `px-6 py-3 rounded-3xl text-sm font-semibold flex items-center gap-2 transition-all ${isSelected ? `bg-${level.color}-600 text-white shadow-lg` : 'bg-white hover:bg-gray-100 text-gray-700 border'}`
+                btn.innerHTML = `
+                    <span class="text-xl">${level.id.toUpperCase()}</span>
+                    <span>${level.name}</span>
+                    <span class="text-xs px-3 py-px bg-white/30 text-white rounded-2xl">${level.label}</span>
+                `
+                btn.onclick = () => {
+                    selectedLevel = level
+                    renderLevelButtons()
+                    renderBooks()
+                }
+                container.appendChild(btn)
+            })
+            
+            // If no level selected yet, pick the first one
+            if (!selectedLevel) {
+                selectedLevel = levels[0]
+                renderLevelButtons()
+                renderBooks()
+            }
+        }
+
+        function renderBooks() {
+            const container = document.getElementById('books-grid')
+            container.innerHTML = ''
+            
+            document.getElementById('books-level-title').innerHTML = `
+                Libros disponibles para <span class="text-${selectedLevel.color}-600">${selectedLevel.name}</span>
+            `
+            
+            const books = booksDB[selectedLevel.id] || []
+            
+            books.forEach((book, index) => {
+                const isCompleted = completedBooks.some(b => b.id === book.id)
+                
+                const cardHTML = `
+                <div onclick="openBook(${index})" class="book-card bg-white rounded-3xl overflow-hidden border border-transparent cursor-pointer">
+                    <div class="h-48 bg-gradient-to-br from-${selectedLevel.color}-100 to-white flex items-center justify-center text-7xl relative">
+                        📖
+                        ${isCompleted ? `<div class="absolute top-4 right-4 bg-emerald-400 text-white text-xs font-bold px-3 py-1 rounded-2xl flex items-center gap-1"><i class="fas fa-check"></i> LEÍDO</div>` : ''}
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-semibold text-xl leading-none mb-1">${book.title}</h4>
+                        <p class="text-gray-400 text-sm">${book.author}</p>
+                        <p class="text-gray-600 text-sm mt-4 line-clamp-3">${book.description}</p>
+                        
+                        <div class="flex justify-between items-center mt-6 text-xs">
+                            <div class="flex items-center gap-1 text-emerald-600">
+                                <i class="fas fa-book-open"></i>
+                                <span>10 páginas</span>
+                            </div>
+                            <div class="px-4 py-1 bg-gray-100 rounded-3xl text-gray-500">Nivel ${selectedLevel.name}</div>
+                        </div>
+                    </div>
+                </div>`
+                
+                container.innerHTML += cardHTML
+            })
+            
+            if (books.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 col-span-full text-center py-12">No hay libros para este nivel aún.</p>`
+            }
+        }
+
+        function openBook(index) {
+            currentBookIndex = index
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            
+            currentPageIndex = 1
+            
+            document.getElementById('reader-book-title').textContent = book.title
+            document.getElementById('reader-book-author').textContent = `por ${book.author}`
+            
+            showScreen('reader-screen')
+            renderCurrentPage()
+        }
+
+        function renderCurrentPage() {
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            
+            document.getElementById('page-counter').textContent = String(currentPageIndex).padStart(2, '0')
+            document.getElementById('page-progress').style.width = `${(currentPageIndex / 10) * 100}%`
+            document.getElementById('page-text').innerHTML = `<p class="text-gray-800">${book.pages[currentPageIndex - 1]}</p>`
+            
+            // Show finish button only on last page
+            const finishBtn = document.getElementById('finish-book-btn')
+            if (currentPageIndex === 10) {
+                finishBtn.classList.remove('hidden')
+                finishBtn.classList.add('flex')
+            } else {
+                finishBtn.classList.add('hidden')
+                finishBtn.classList.remove('flex')
+            }
+            
+            document.getElementById('prev-btn').disabled = currentPageIndex === 1
+        }
+
+        function nextPage() {
+            const books = booksDB[selectedLevel.id]
+            if (currentPageIndex < books[currentBookIndex].pages.length) {
+                currentPageIndex++
+                renderCurrentPage()
+            }
+        }
+
+        function prevPage() {
+            if (currentPageIndex > 1) {
+                currentPageIndex--
+                renderCurrentPage()
+            }
+        }
+
+        function exitReader() {
+            showScreen('app-screen')
+        }
+
+        function finishBook() {
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            
+            // Prepare quiz
+            quizAnswers = new Array(book.quiz.length).fill(null)
+            
+            let html = ''
+            book.quiz.forEach((q, i) => {
+                html += `
+                <div class="border rounded-3xl p-6">
+                    <p class="font-medium text-lg mb-4">${i + 1}. ${q.q}</p>
+                    <div class="space-y-3">
+                        ${q.options.map((opt, optIndex) => `
+                        <label onclick="selectQuizAnswer(${i}, ${optIndex})" class="flex items-center gap-3 cursor-pointer p-4 border border-transparent hover:border-violet-300 rounded-2xl transition-all ${quizAnswers[i] === optIndex ? 'bg-violet-50 border-violet-300' : ''}">
+                            <input type="radio" name="q${i}" class="accent-violet-600" ${quizAnswers[i] === optIndex ? 'checked' : ''}>
+                            <span class="text-base">${opt}</span>
+                        </label>`).join('')}
+                    </div>
+                </div>`
+            })
+            
+            document.getElementById('quiz-questions').innerHTML = html
+            document.getElementById('quiz-book-name').innerHTML = `<strong>${book.title}</strong> – Responde las 5 preguntas`
+            
+            showScreen('quiz-screen')
+        }
+
+        window.selectQuizAnswer = function(questionIndex, optionIndex) {
+            quizAnswers[questionIndex] = optionIndex
+            // Re-render to show selected state
+            finishBook() // cheap re-render
+            // Re-select the current answers
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            book.quiz.forEach((q, i) => {
+                if (quizAnswers[i] !== null) {
+                    const radios = document.querySelectorAll(`input[name="q${i}"]`)
+                    if (radios[quizAnswers[i]]) radios[quizAnswers[i]].checked = true
+                }
+            })
+        }
+
+        function submitQuiz() {
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            
+            let correctCount = 0
+            book.quiz.forEach((q, i) => {
+                if (quizAnswers[i] === q.correct) correctCount++
+            })
+            
+            const percentage = Math.round((correctCount / book.quiz.length) * 100)
+            
+            // Show result inside the quiz modal temporarily
+            const resultHTML = `
+            <div class="text-center py-12">
+                <div class="text-7xl mb-6">${percentage >= 70 ? '🎉' : '📚'}</div>
+                <h3 class="text-3xl font-semibold">${percentage >= 70 ? '¡Excelente!' : '¡Bien hecho!'}</h3>
+                <p class="text-5xl font-mono mt-4 text-violet-600">${correctCount}/${book.quiz.length} correctas</p>
+                <p class="mt-2 text-gray-500">${percentage}% – ${percentage >= 70 ? '¡Has comprendido el libro!' : 'Repasa las páginas y vuelve a intentarlo'}</p>
+                
+                <div class="mt-10 flex justify-center">
+                    <button onclick="startActivities()" 
+                            class="px-12 py-5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-xl font-semibold rounded-3xl flex items-center gap-4">
+                        IR A LAS 5 ACTIVIDADES
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>`
+            
+            document.getElementById('quiz-questions').innerHTML = resultHTML
+        }
+
+        function exitQuiz() {
+            showScreen('reader-screen')
+        }
+
+        function startActivities() {
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            
+            currentActivitiesCompleted = 0
+            
+            document.getElementById('activity-book-title').innerHTML = `Actividades • <strong>${book.title}</strong>`
+            
+            let activitiesHTML = `<div class="grid grid-cols-1 gap-6">`
+            
+            book.activities.forEach((activity, idx) => {
+                let inner = ''
+                
+                if (activity.type === 'truefalse') {
+                    inner = activity.items.map((item, i) => `
+                    <div class="flex justify-between items-center p-4 border rounded-2xl">
+                        <span class="font-medium">${item.statement}</span>
+                        <div class="flex gap-3">
+                            <button onclick="answerTrueFalse(${idx}, ${i}, true)" class="px-6 py-2 text-sm rounded-2xl border hover:bg-emerald-50">Verdadero</button>
+                            <button onclick="answerTrueFalse(${idx}, ${i}, false)" class="px-6 py-2 text-sm rounded-2xl border hover:bg-red-50">Falso</button>
+                        </div>
+                    </div>`).join('')
+                } else if (activity.type === 'match') {
+                    inner = `<div class="grid grid-cols-2 gap-4">` +
+                        activity.pairs.map((pair, i) => `
+                        <div onclick="this.classList.toggle('ring-4');this.classList.toggle('ring-teal-400')" class="bg-teal-50 rounded-2xl p-4 cursor-pointer text-center font-medium">${pair.word}</div>
+                        <div onclick="this.classList.toggle('ring-4');this.classList.toggle('ring-teal-400')" class="bg-teal-50 rounded-2xl p-4 cursor-pointer text-center font-medium">${pair.def}</div>`).join('') + `</div>`
+                } else if (activity.type === 'fill') {
+                    inner = `
+                    <div class="flex flex-col gap-4">
+                        <p class="font-medium">${activity.sentence}</p>
+                        <div class="flex gap-3">
+                            ${activity.options.map(opt => `<button onclick="checkFillAnswer(${idx}, '${opt}')" class="flex-1 py-4 border rounded-3xl">${opt}</button>`).join('')}
+                        </div>
+                    </div>`
+                } else if (activity.type === 'order') {
+                    inner = `<div class="space-y-2">${activity.events.map((ev, i) => `<div draggable="true" ondragstart="dragStart(event, ${i})" class="bg-gray-100 p-4 rounded-2xl cursor-move">${ev}</div>`).join('')}</div>`
+                } else if (activity.type === 'write') {
+                    inner = `
+                    <textarea id="write-text-${idx}" rows="3" class="w-full border rounded-3xl p-6 text-base" placeholder="${activity.prompt}"></textarea>
+                    <button onclick="submitWrite(${idx})" class="w-full py-4 bg-teal-600 text-white rounded-3xl">Enviar y obtener feedback</button>`
+                }
+                
+                activitiesHTML += `
+                <div class="border border-gray-200 rounded-3xl p-6">
+                    <div class="flex justify-between mb-4">
+                        <span class="font-semibold text-lg">${activity.title}</span>
+                        <span id="act-status-${idx}" class="text-xs px-4 py-1 rounded-3xl bg-gray-100 text-gray-400">Pendiente</span>
+                    </div>
+                    ${inner}
+                </div>`
+            })
+            
+            activitiesHTML += `</div>`
+            document.getElementById('activities-content').innerHTML = activitiesHTML
+            
+            showScreen('activities-screen')
+        }
+
+        // Activity helper functions (global for onclick)
+        window.answerTrueFalse = function(actIndex, itemIndex, userAnswer) {
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            const activity = book.activities[actIndex]
+            const item = activity.items[itemIndex]
+            
+            if (userAnswer === item.answer) {
+                alert('✅ Correcto!')
+            } else {
+                alert('❌ Inténtalo de nuevo')
+            }
+            
+            // Mark as completed
+            currentActivitiesCompleted++
+            document.getElementById('act-status-' + actIndex).innerHTML = `<i class="fas fa-check text-emerald-500"></i>`
+            document.getElementById('act-status-' + actIndex).className = 'text-xs px-4 py-1 rounded-3xl bg-emerald-100 text-emerald-600'
+            
+            updateActivitiesProgress()
+        }
+
+        window.checkFillAnswer = function(actIndex, chosen) {
+            const books = booksDB[selectedLevel.id]
+            const book = books[currentBookIndex]
+            const activity = book.activities[actIndex]
+            
+            if (chosen === activity.correct) {
+                alert('¡Perfecto!')
+            } else {
+                alert('Casi… la respuesta correcta era: ' + activity.correct)
+            }
+            currentActivitiesCompleted++
+            document.getElementById('act-status-' + actIndex).innerHTML = `<i class="fas fa-check text-emerald-500"></i>`
+            document.getElementById('act-status-' + actIndex).className = 'text-xs px-4 py-1 rounded-3xl bg-emerald-100 text-emerald-600'
+            updateActivitiesProgress()
+        }
+
+        window.submitWrite = function(actIndex) {
+            const textarea = document.getElementById('write-text-' + actIndex)
+            if (textarea && textarea.value.trim().length > 5) {
+                alert('¡Muy bien escrito! Tu profesor ficticio te da 10/10 👍')
+                currentActivitiesCompleted++
+                document.getElementById('act-status-' + actIndex).innerHTML = `<i class="fas fa-check text-emerald-500"></i>`
+                document.getElementById('act-status-' + actIndex).className = 'text-xs px-4 py-1 rounded-3xl bg-emerald-100 text-emerald-600'
+                updateActivitiesProgress()
+            } else {
+                alert('Escribe al menos una frase completa.')
+            }
+        }
+
+        function updateActivitiesProgress() {
+            const total = 5
+            document.getElementById('activities-completed-text').innerHTML = `${currentActivitiesCompleted} de ${total} completadas`
+            
+            if (currentActivitiesCompleted >= total) {
+                document.getElementById('finish-activities-btn').classList.remove('hidden')
+                // Mark book as completed
+                const books = booksDB[selectedLevel.id]
+                const book = books[currentBookIndex]
+                if (!completedBooks.find(b => b.id === book.id)) {
+                    completedBooks.push(book)
+                    saveProgress()
+                }
+            }
+        }
+
+        function finishAllActivities() {
+            showScreen('app-screen')
+            renderBooks() // refresh to show completed badge
+        }
+
+        function exitActivities() {
+            showScreen('app-screen')
+        }
+
+        function showMyProgress() {
+            const modal = document.getElementById('progress-modal')
+            const list = document.getElementById('progress-list')
+            
+            let html = ''
+            if (completedBooks.length === 0) {
+                html = `<p class="text-gray-400 text-center py-8">Aún no has terminado ningún libro.<br>¡Empieza a leer hoy!</p>`
+            } else {
+                completedBooks.forEach(book => {
+                    html += `
+                    <div class="flex justify-between items-center bg-gray-50 rounded-2xl px-6 py-4">
+                        <div class="flex items-center gap-4">
+                            <span class="text-3xl">📖</span>
+                            <div>
+                                <p class="font-semibold">${book.title}</p>
+                                <p class="text-xs text-gray-400">${book.level.toUpperCase()} • 10 páginas leídas</p>
+                            </div>
+                        </div>
+                        <div class="text-emerald-600 font-medium text-sm flex items-center gap-1">
+                            <i class="fas fa-check-circle"></i> COMPLETO
+                        </div>
+                    </div>`
+                })
+            }
+            
+            list.innerHTML = html
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        }
+
+        function hideProgress() {
+            const modal = document.getElementById('progress-modal')
+            modal.classList.add('hidden')
+            modal.classList.remove('flex')
+        }
+
+        function goBackToDashboard() {
+            selectedLevel = null
+            renderLevelButtons()
+        }
+
+        function logout() {
+            if (confirm('¿Quieres cerrar sesión?')) {
+                currentUser = null
+                localStorage.removeItem('fictionExpressUser')
+                showScreen('login-screen')
+            }
+        }
+
+        function fakeForgotPassword() {
+            alert('En esta demo la contraseña es siempre "ingles123" 😉')
+        }
+
+        // =============== MAIN APP START ===============
+        function loginSuccess(username) {
+            currentUser = username
+            localStorage.setItem('fictionExpressUser', username)
+            
+            // Load saved progress
+            loadProgress()
+            
+            // Show app
+            document.getElementById('user-name-display').textContent = username
+            document.getElementById('user-level-display').innerHTML = `Nivel actual: <span class="font-medium text-indigo-600">Cualquiera que elijas</span>`
+            
+            showScreen('app-screen')
+            renderLevelButtons()
+        }
+
+        // Form submit
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault()
+            
+            const usernameInput = document.getElementById('username').value.trim()
+            const passwordInput = document.getElementById('password').value
+            
+            // Demo credentials
+            if ((usernameInput === 'estudiante' || usernameInput.length > 2) && passwordInput === 'ingles123') {
+                loginSuccess(usernameInput || 'Estudiante')
+            } else {
+                alert('Usuario o contraseña incorrectos.\n\nPrueba:\nUsuario: estudiante\nContraseña: ingles123')
+            }
+        })
+
+        // Auto-login if already logged (refresh)
+        window.onload = function() {
+            initializeTailwind()
+            const savedUser = localStorage.getItem('fictionExpressUser')
+            if (savedUser) {
+                currentUser = savedUser
+                loginSuccess(savedUser)
+            }
+        }
+    </script>
+</body>
+</html>
+```                        "

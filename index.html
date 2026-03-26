@@ -1150,140 +1150,7 @@ function makePage(title, sub, paragraphs) {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  A1 BOOKS (20 books)
-// ─────────────────────────────────────────────────────────────
-const A1_BOOKS = [
-  {
-    title:"My First Day",genre:"Daily Life",
-    pages:[
-      makePage("A New Morning","Page 1",["Today is Monday. My name is Tom. I am eight years old. I live in a small house with my family.","My house has a red door. There is a big tree in the garden. I like my house very much.","I wake up at seven o'clock. I open my eyes. The sun is bright. Birds are singing outside."]),
-      makePage("Breakfast Time","Page 2",["I go to the kitchen. My mom is there. She says, 'Good morning, Tom!' I say, 'Good morning, Mom!'","There is bread on the table. There is milk and an orange. I eat my breakfast slowly. It is very good.","My dog is in the kitchen too. His name is Max. He looks at me. He wants food too."]),
-      makePage("Getting Ready","Page 3",["After breakfast, I brush my teeth. I look in the mirror. I smile. My teeth are white and clean.","I put on my clothes. I wear a blue shirt and black trousers. I put on my shoes. They are new and brown.","I take my school bag. It is heavy. There are books, a pencil case, and my lunch box inside."]),
-      makePage("Walking to School","Page 4",["I walk to school with my friend Sara. She lives on the next street. She has a yellow bag.","We walk past the park. There are flowers in the park. They are red and yellow. A dog runs in the grass.","Sara says, 'I am happy today!' I ask, 'Why?' She says, 'It is my birthday!' I say, 'Happy Birthday, Sara!'"]),
-      makePage("My Classroom","Page 5",["Our school is big and white. We go inside. Our classroom is on the second floor. It has twelve desks.","My teacher is Mr. Brown. He is tall and kind. He has glasses. He says, 'Good morning, class!'","There are pictures on the wall. There is a map of the world. I like to look at the map."]),
-      makePage("A Fun Lesson","Page 6",["Mr. Brown writes on the board. He writes new words. I copy the words in my notebook. I like writing.","We learn about animals today. Mr. Brown shows pictures. There is a lion, an elephant, and a penguin. I like penguins!","Sara raises her hand. She knows the answer. Mr. Brown says, 'Very good, Sara!' She smiles."]),
-      makePage("Lunchtime","Page 7",["At one o'clock, we have lunch. I open my lunch box. There is a sandwich, an apple, and a cookie.","I sit with my friends. There is Ben, Lucy, and Carlos. We talk and laugh. The food is good.","After lunch, we play in the yard. I run and jump. Ben is very fast. Lucy likes to skip rope."]),
-      makePage("Afternoon Class","Page 8",["In the afternoon, we have art class. I love art class! We use paint and paper. We draw a house.","My house has a green roof. There is a yellow sun in the sky. I draw a cat on the door step.","Mr. Brown looks at my picture. He says, 'Wonderful, Tom! Your colors are beautiful.' I feel very proud."]),
-      makePage("Going Home","Page 9",["School finishes at three o'clock. I put my things in my bag. I say goodbye to my friends.","Sara walks home with me again. She has a balloon. It is pink. It was a birthday balloon from her class.","We say goodbye at the corner. I walk the last part alone. I can see my red door from the street."]),
-      makePage("Evening and Bed","Page 10",["At home, my mom asks, 'How was school?' I say, 'It was great!' I tell her about the art class.","We eat dinner together. We have soup and bread. My dad tells a funny story. We all laugh.","At eight o'clock, I go to bed. I am very tired. I close my eyes. I think about tomorrow. I am happy."]),
-    ],
-    quiz:[
-      {q:"What is Tom's age?",opts:["Six","Seven","Eight","Nine"],correct:2},
-      {q:"What color is Tom's house door?",opts:["Blue","Red","Green","Yellow"],correct:1},
-      {q:"Who is Tom's teacher?",opts:["Mr. Smith","Mr. Green","Mr. Brown","Mr. White"],correct:2},
-      {q:"What does Tom eat for lunch?",opts:["Pizza","A sandwich, apple, and cookie","Soup and bread","Rice"],correct:1},
-      {q:"What subject does Tom have in the afternoon?",opts:["Maths","Science","Art","Music"],correct:2},
-      {q:"What color is Sara's bag?",opts:["Red","Blue","Green","Yellow"],correct:3},
-      {q:"What is Sara's special occasion?",opts:["Her first day","Her birthday","A holiday","A test"],correct:1},
-      {q:"What time does school finish?",opts:["Two o'clock","Three o'clock","Four o'clock","Five o'clock"],correct:1},
-      {q:"What do they have for dinner?",opts:["Pizza","Sandwich","Soup and bread","Rice and vegetables"],correct:2},
-      {q:"What time does Tom go to bed?",opts:["Seven","Eight","Nine","Ten"],correct:1},
-    ],
-    fill:[
-      {sentence:"My name is ___ and I am eight years old.",answer:"Tom"},
-      {sentence:"My dog's name is ___.",answer:"Max"},
-      {sentence:"Sara says it is her ___.",answer:"birthday"},
-      {sentence:"Tom's favorite subject is ___ class.",answer:"art"},
-      {sentence:"The school finishes at ___ o'clock.",answer:"three"},
-    ],
-    match:[
-      {word:"kitchen",def:"room where you cook food"},
-      {word:"classroom",def:"room where you study at school"},
-      {word:"mirror",def:"glass that shows your reflection"},
-      {word:"garden",def:"outdoor area with plants"},
-      {word:"notebook",def:"book you write in"},
-    ],
-    drag:[
-      {words:["Tom","likes","penguins","very","much"],correct:"Tom likes penguins very much"},
-      {words:["I","eat","my","breakfast","slowly"],correct:"I eat my breakfast slowly"},
-    ],
-    memory:[
-      {word:"morning",def:"start of the day"},
-      {word:"breakfast",def:"first meal of the day"},
-      {word:"school",def:"place to learn"},
-      {word:"teacher",def:"person who teaches"},
-      {word:"lunch",def:"midday meal"},
-      {word:"tired",def:"needing sleep"},
-    ]
-  },
-  {
-    title:"The Little Garden",genre:"Nature",
-    pages:[
-      makePage("Seeds in the Ground","Page 1",["My grandma has a garden. It is behind her house. The garden is big and green. Many flowers grow there.","One day, Grandma says to me, 'Let's plant seeds!' I am excited. I put on my boots and go outside.","The soil is dark and soft. Grandma shows me how to make a little hole with my finger. I put the seed inside."]),
-      makePage("Water Every Day","Page 2",["After we plant the seeds, Grandma gives me a small watering can. It is blue with white flowers on it.","'You must water the seeds every day,' Grandma says. 'Seeds need water and sunlight to grow.'","I water the seeds carefully. I do not pour too much water. Grandma says, 'Very good! You are a good gardener!'"]),
-      makePage("A Little Green Shoot","Page 3",["Five days later, I see something small and green in the soil. It is a tiny shoot! My seed is growing!","I am so happy. I call Grandma. She comes outside and looks. 'Wonderful!' she says. 'Your plant is alive!'","I water the shoot gently. I talk to it too. Grandma laughs and says that plants like to hear kind words."]),
-      makePage("Sunshine and Rain","Page 4",["Some days are sunny. The plant grows taller on sunny days. I can see new leaves. They are bright green.","One day, it rains a lot. I do not go outside. I watch from the window. The rain waters the garden for me.","After the rain, everything looks clean and fresh. There are little drops on the leaves. They look like diamonds."]),
-      makePage("The Worm Helper","Page 5",["I dig near my plant one day. I find a pink worm! I am surprised. I pick it up carefully.","Grandma says, 'Worms are good for the garden. They make the soil soft and healthy.' I put the worm back.","Now I am not scared of worms. I know they are helpers. The garden needs them to be healthy and strong."]),
-      makePage("My Plant Gets a Flower","Page 6",["After three weeks, my plant has a flower! It is yellow and round. It is a sunflower. I am very proud.","Grandma takes a photo of me and my sunflower. I smile a big smile. My flower is taller than me now!","The bees love my flower. They fly around it and collect pollen. Grandma says bees are very important."]),
-      makePage("Vegetables Too","Page 7",["Grandma also grows vegetables in another part of the garden. There are tomatoes, carrots, and beans.","The tomatoes are red and round. I pick one and taste it. It is sweet. 'This is from my garden!' I think.","Grandma says vegetables from gardens taste better than vegetables from shops. I agree with her."]),
-      makePage("A Butterfly Visits","Page 8",["One morning, a beautiful butterfly comes to the garden. It has orange and black wings. It sits on a flower.","I stand very still. I do not want to scare it. The butterfly stays for a long time. Then it flies away slowly.","I draw the butterfly in my notebook. I color it orange and black. It is my favorite drawing this summer."]),
-      makePage("Harvest Day","Page 9",["In August, Grandma says it is harvest day. We pick all the ripe vegetables and fruits from the garden.","I pick red tomatoes and yellow beans. My basket is full. Grandma picks the big orange pumpkins.","We bring everything inside. The kitchen table is full of colors. It looks like a painting. I feel very proud."]),
-      makePage("A Garden Lesson","Page 10",["Before I go home, Grandma says, 'What did you learn this summer?' I think for a moment.","'I learned that plants need water and sun. I learned that worms and bees help the garden. And I learned to be patient,' I say.","Grandma hugs me. 'You are a true gardener,' she says. I smile. Next summer, I will plant more seeds. Maybe tomatoes!"]),
-    ],
-    quiz:[
-      {q:"Where is Grandma's garden?",opts:["In front of the house","Behind the house","Next to the school","In the park"],correct:1},
-      {q:"What color is the watering can?",opts:["Red","Yellow","Blue","Green"],correct:2},
-      {q:"What kind of plant grows from Tom's seed?",opts:["Rose","Sunflower","Tulip","Daisy"],correct:1},
-      {q:"What do worms do for the garden?",opts:["Eat the plants","Make the soil soft","Scare the bees","Drink the water"],correct:1},
-      {q:"What color is the butterfly?",opts:["Blue and white","Red and green","Orange and black","Yellow and purple"],correct:2},
-      {q:"When is harvest day?",opts:["July","August","September","October"],correct:1},
-      {q:"What vegetable does the narrator pick?",opts:["Carrots","Beans and tomatoes","Pumpkins","Potatoes"],correct:1},
-      {q:"Why does Grandma say bees are important?",opts:["They make honey","They collect pollen","They water plants","They scare birds"],correct:1},
-      {q:"What does the narrator draw in their notebook?",opts:["A sunflower","A worm","A butterfly","A tomato"],correct:2},
-      {q:"What does the narrator plan to plant next summer?",opts:["Flowers","More sunflowers","Maybe tomatoes","Nothing"],correct:2},
-    ],
-    fill:[
-      {sentence:"Seeds need ___ and sunlight to grow.",answer:"water"},
-      {sentence:"My plant has a ___ flower, it is a sunflower.",answer:"yellow"},
-      {sentence:"Worms make the soil soft and ___.",answer:"healthy"},
-      {sentence:"The butterfly has orange and ___ wings.",answer:"black"},
-      {sentence:"In August, it is ___ day.",answer:"harvest"},
-    ],
-    match:[
-      {word:"soil",def:"earth where plants grow"},
-      {word:"shoot",def:"first growth from a seed"},
-      {word:"harvest",def:"time to collect crops"},
-      {word:"pollen",def:"yellow powder in flowers"},
-      {word:"pumpkin",def:"large orange vegetable"},
-    ],
-    drag:[
-      {words:["plants","need","water","and","sun"],correct:"plants need water and sun"},
-      {words:["Worms","are","good","for","the","garden"],correct:"Worms are good for the garden"},
-    ],
-    memory:[
-      {word:"seed",def:"small thing that grows into a plant"},
-      {word:"watering can",def:"container for watering plants"},
-      {word:"sunflower",def:"tall yellow flower"},
-      {word:"butterfly",def:"insect with colorful wings"},
-      {word:"tomato",def:"red round vegetable"},
-      {word:"harvest",def:"collecting ripe crops"},
-    ]
-  },
-  // Books 3-20 for A1 (abbreviated with unique titles and genres)
-  {title:"The Friendly Dog",genre:"Pets",pages:generatePages("A1",3),quiz:generateQuiz("A1",3),fill:generateFill("A1",3),match:generateMatch("A1",3),drag:generateDrag("A1",3),memory:generateMemory("A1",3)},
-  {title:"At the Market",genre:"Community",pages:generatePages("A1",4),quiz:generateQuiz("A1",4),fill:generateFill("A1",4),match:generateMatch("A1",4),drag:generateDrag("A1",4),memory:generateMemory("A1",4)},
-  {title:"Colors Around Me",genre:"Art",pages:generatePages("A1",5),quiz:generateQuiz("A1",5),fill:generateFill("A1",5),match:generateMatch("A1",5),drag:generateDrag("A1",5),memory:generateMemory("A1",5)},
-  {title:"My Family",genre:"Family",pages:generatePages("A1",6),quiz:generateQuiz("A1",6),fill:generateFill("A1",6),match:generateMatch("A1",6),drag:generateDrag("A1",6),memory:generateMemory("A1",6)},
-  {title:"A Trip to the Zoo",genre:"Adventure",pages:generatePages("A1",7),quiz:generateQuiz("A1",7),fill:generateFill("A1",7),match:generateMatch("A1",7),drag:generateDrag("A1",7),memory:generateMemory("A1",7)},
-  {title:"Weather Every Day",genre:"Science",pages:generatePages("A1",8),quiz:generateQuiz("A1",8),fill:generateFill("A1",8),match:generateMatch("A1",8),drag:generateDrag("A1",8),memory:generateMemory("A1",8)},
-  {title:"The Magic Box",genre:"Fantasy",pages:generatePages("A1",9),quiz:generateQuiz("A1",9),fill:generateFill("A1",9),match:generateMatch("A1",9),drag:generateDrag("A1",9),memory:generateMemory("A1",9)},
-  {title:"My Birthday Party",genre:"Celebration",pages:generatePages("A1",10),quiz:generateQuiz("A1",10),fill:generateFill("A1",10),match:generateMatch("A1",10),drag:generateDrag("A1",10),memory:generateMemory("A1",10)},
-  {title:"The Lost Kitten",genre:"Animals",pages:generatePages("A1",11),quiz:generateQuiz("A1",11),fill:generateFill("A1",11),match:generateMatch("A1",11),drag:generateDrag("A1",11),memory:generateMemory("A1",11)},
-  {title:"A Rainy Day",genre:"Daily Life",pages:generatePages("A1",12),quiz:generateQuiz("A1",12),fill:generateFill("A1",12),match:generateMatch("A1",12),drag:generateDrag("A1",12),memory:generateMemory("A1",12)},
-  {title:"The Beach Holiday",genre:"Travel",pages:generatePages("A1",13),quiz:generateQuiz("A1",13),fill:generateFill("A1",13),match:generateMatch("A1",13),drag:generateDrag("A1",13),memory:generateMemory("A1",13)},
-  {title:"Making a Cake",genre:"Food",pages:generatePages("A1",14),quiz:generateQuiz("A1",14),fill:generateFill("A1",14),match:generateMatch("A1",14),drag:generateDrag("A1",14),memory:generateMemory("A1",14)},
-  {title:"A New Friend",genre:"Friendship",pages:generatePages("A1",15),quiz:generateQuiz("A1",15),fill:generateFill("A1",15),match:generateMatch("A1",15),drag:generateDrag("A1",15),memory:generateMemory("A1",15)},
-  {title:"The Toy Robot",genre:"Technology",pages:generatePages("A1",16),quiz:generateQuiz("A1",16),fill:generateFill("A1",16),match:generateMatch("A1",16),drag:generateDrag("A1",16),memory:generateMemory("A1",16)},
-  {title:"Seasons Change",genre:"Nature",pages:generatePages("A1",17),quiz:generateQuiz("A1",17),fill:generateFill("A1",17),match:generateMatch("A1",17),drag:generateDrag("A1",17),memory:generateMemory("A1",17)},
-  {title:"At the Library",genre:"Education",pages:generatePages("A1",18),quiz:generateQuiz("A1",18),fill:generateFill("A1",18),match:generateMatch("A1",18),drag:generateDrag("A1",18),memory:generateMemory("A1",18)},
-  {title:"Playing Sports",genre:"Sports",pages:generatePages("A1",19),quiz:generateQuiz("A1",19),fill:generateFill("A1",19),match:generateMatch("A1",19),drag:generateDrag("A1",19),memory:generateMemory("A1",19)},
-  {title:"The Old Lighthouse",genre:"Mystery",pages:generatePages("A1",20),quiz:generateQuiz("A1",20),fill:generateFill("A1",20),match:generateMatch("A1",20),drag:generateDrag("A1",20),memory:generateMemory("A1",20)},
-];
-
-// ─────────────────────────────────────────────────────────────
-//  BOOK CONTENT GENERATORS (for levels A2–C2 and remaining A1 books)
-// ─────────────────────────────────────────────────────────────
-
+//  STORY THEMES, TITLES, GENRES AND PAGE CONTENT (moved here so they exist before A1_BOOKS)
 const STORY_THEMES = {
   A1:["daily life","a pet","a garden","school","family","a holiday","a birthday","a rainy day","the market","a trip to the zoo","a lost kitten","a new friend","making a cake","playing sports","a magic box","an old lighthouse","colors and art","the library","weather","a toy robot"],
   A2:["a mystery letter","the school play","a camping trip","a new neighborhood","the old bookshop","a pen pal","a sports competition","a summer job","the town fair","a secret garden","learning to cook","a lost map","a grandfather's story","the art competition","helping a neighbor","a boat trip","a music recital","a haunted house","the science project","a new pet"],
@@ -1309,7 +1176,6 @@ const GENRES_BY_LEVEL = {
   C2:["Experimental","Philosophy","Ontology","Literary Fiction","Romance","Meta-Fiction","Allegory","Semiotics","Memory","Consciousness","Tragedy","Hermeneutics","Mysticism","Absurdism","Philosophy","Deconstruction","Epistemology","Postmodern","Linguistics","Ethics"]
 };
 
-// Page content by level
 const PAGE_CONTENT = {
   A1: [
     ["The story begins on a sunny morning. The main character wakes up and looks outside. The sky is blue and the birds are singing in the trees outside the window.","Everything looks beautiful. There is a gentle breeze moving the curtains. The smell of breakfast comes from the kitchen below.","Today is going to be a special day. The character smiles and gets up from the warm, comfortable bed. It is time to begin the adventure."],
@@ -1386,8 +1252,7 @@ const PAGE_CONTENT = {
 };
 
 // ─────────────────────────────────────────────────────────────
-//  GENERATE FUNCTIONS
-// ─────────────────────────────────────────────────────────────
+//  GENERATE FUNCTIONS (moved here BEFORE A1_BOOKS so there is no TDZ error)
 function generatePages(level, bookNum) {
   const theme = (STORY_THEMES[level]||STORY_THEMES.B1)[(bookNum-1)%20];
   const pageContent = PAGE_CONTENT[level] || PAGE_CONTENT.B1;
@@ -1642,9 +1507,6 @@ function generateMemory(level, bookNum) {
   return (sets[level]||sets.B1).map(m=>({...m}));
 }
 
-// ─────────────────────────────────────────────────────────────
-//  BUILD ALL BOOKS
-// ─────────────────────────────────────────────────────────────
 function buildLevelBooks(level) {
   const titles = BOOK_TITLES[level] || [];
   const genres = GENRES_BY_LEVEL[level] || [];
@@ -1660,6 +1522,138 @@ function buildLevelBooks(level) {
   }));
 }
 
+// ─────────────────────────────────────────────────────────────
+//  A1 BOOKS (20 books) — NOW SAFE because all generators are already defined
+const A1_BOOKS = [
+  {
+    title:"My First Day",genre:"Daily Life",
+    pages:[
+      makePage("A New Morning","Page 1",["Today is Monday. My name is Tom. I am eight years old. I live in a small house with my family.","My house has a red door. There is a big tree in the garden. I like my house very much.","I wake up at seven o'clock. I open my eyes. The sun is bright. Birds are singing outside."]),
+      makePage("Breakfast Time","Page 2",["I go to the kitchen. My mom is there. She says, 'Good morning, Tom!' I say, 'Good morning, Mom!'","There is bread on the table. There is milk and an orange. I eat my breakfast slowly. It is very good.","My dog is in the kitchen too. His name is Max. He looks at me. He wants food too."]),
+      makePage("Getting Ready","Page 3",["After breakfast, I brush my teeth. I look in the mirror. I smile. My teeth are white and clean.","I put on my clothes. I wear a blue shirt and black trousers. I put on my shoes. They are new and brown.","I take my school bag. It is heavy. There are books, a pencil case, and my lunch box inside."]),
+      makePage("Walking to School","Page 4",["I walk to school with my friend Sara. She lives on the next street. She has a yellow bag.","We walk past the park. There are flowers in the park. They are red and yellow. A dog runs in the grass.","Sara says, 'I am happy today!' I ask, 'Why?' She says, 'It is my birthday!' I say, 'Happy Birthday, Sara!'"]),
+      makePage("My Classroom","Page 5",["Our school is big and white. We go inside. Our classroom is on the second floor. It has twelve desks.","My teacher is Mr. Brown. He is tall and kind. He has glasses. He says, 'Good morning, class!'","There are pictures on the wall. There is a map of the world. I like to look at the map."]),
+      makePage("A Fun Lesson","Page 6",["Mr. Brown writes on the board. He writes new words. I copy the words in my notebook. I like writing.","We learn about animals today. Mr. Brown shows pictures. There is a lion, an elephant, and a penguin. I like penguins!","Sara raises her hand. She knows the answer. Mr. Brown says, 'Very good, Sara!' She smiles."]),
+      makePage("Lunchtime","Page 7",["At one o'clock, we have lunch. I open my lunch box. There is a sandwich, an apple, and a cookie.","I sit with my friends. There is Ben, Lucy, and Carlos. We talk and laugh. The food is good.","After lunch, we play in the yard. I run and jump. Ben is very fast. Lucy likes to skip rope."]),
+      makePage("Afternoon Class","Page 8",["In the afternoon, we have art class. I love art class! We use paint and paper. We draw a house.","My house has a green roof. There is a yellow sun in the sky. I draw a cat on the door step.","Mr. Brown looks at my picture. He says, 'Wonderful, Tom! Your colors are beautiful.' I feel very proud."]),
+      makePage("Going Home","Page 9",["School finishes at three o'clock. I put my things in my bag. I say goodbye to my friends.","Sara walks home with me again. She has a balloon. It is pink. It was a birthday balloon from her class.","We say goodbye at the corner. I walk the last part alone. I can see my red door from the street."]),
+      makePage("Evening and Bed","Page 10",["At home, my mom asks, 'How was school?' I say, 'It was great!' I tell her about the art class.","We eat dinner together. We have soup and bread. My dad tells a funny story. We all laugh.","At eight o'clock, I go to bed. I am very tired. I close my eyes. I think about tomorrow. I am happy."]),
+    ],
+    quiz:[
+      {q:"What is Tom's age?",opts:["Six","Seven","Eight","Nine"],correct:2},
+      {q:"What color is Tom's house door?",opts:["Blue","Red","Green","Yellow"],correct:1},
+      {q:"Who is Tom's teacher?",opts:["Mr. Smith","Mr. Green","Mr. Brown","Mr. White"],correct:2},
+      {q:"What does Tom eat for lunch?",opts:["Pizza","A sandwich, apple, and cookie","Soup and bread","Rice"],correct:1},
+      {q:"What subject does Tom have in the afternoon?",opts:["Maths","Science","Art","Music"],correct:2},
+      {q:"What color is Sara's bag?",opts:["Red","Blue","Green","Yellow"],correct:3},
+      {q:"What is Sara's special occasion?",opts:["Her first day","Her birthday","A holiday","A test"],correct:1},
+      {q:"What time does school finish?",opts:["Two o'clock","Three o'clock","Four o'clock","Five o'clock"],correct:1},
+      {q:"What do they have for dinner?",opts:["Pizza","Sandwich","Soup and bread","Rice and vegetables"],correct:2},
+      {q:"What time does Tom go to bed?",opts:["Seven","Eight","Nine","Ten"],correct:1},
+    ],
+    fill:[
+      {sentence:"My name is ___ and I am eight years old.",answer:"Tom"},
+      {sentence:"My dog's name is ___.",answer:"Max"},
+      {sentence:"Sara says it is her ___.",answer:"birthday"},
+      {sentence:"Tom's favorite subject is ___ class.",answer:"art"},
+      {sentence:"The school finishes at ___ o'clock.",answer:"three"},
+    ],
+    match:[
+      {word:"kitchen",def:"room where you cook food"},
+      {word:"classroom",def:"room where you study at school"},
+      {word:"mirror",def:"glass that shows your reflection"},
+      {word:"garden",def:"outdoor area with plants"},
+      {word:"notebook",def:"book you write in"},
+    ],
+    drag:[
+      {words:["Tom","likes","penguins","very","much"],correct:"Tom likes penguins very much"},
+      {words:["I","eat","my","breakfast","slowly"],correct:"I eat my breakfast slowly"},
+    ],
+    memory:[
+      {word:"morning",def:"start of the day"},
+      {word:"breakfast",def:"first meal of the day"},
+      {word:"school",def:"place to learn"},
+      {word:"teacher",def:"person who teaches"},
+      {word:"lunch",def:"midday meal"},
+      {word:"tired",def:"needing sleep"},
+    ]
+  },
+  {
+    title:"The Little Garden",genre:"Nature",
+    pages:[
+      makePage("Seeds in the Ground","Page 1",["My grandma has a garden. It is behind her house. The garden is big and green. Many flowers grow there.","One day, Grandma says to me, 'Let's plant seeds!' I am excited. I put on my boots and go outside.","The soil is dark and soft. Grandma shows me how to make a little hole with my finger. I put the seed inside."]),
+      makePage("Water Every Day","Page 2",["After we plant the seeds, Grandma gives me a small watering can. It is blue with white flowers on it.","'You must water the seeds every day,' Grandma says. 'Seeds need water and sunlight to grow.'","I water the seeds carefully. I do not pour too much water. Grandma says, 'Very good! You are a good gardener!'"]),
+      makePage("A Little Green Shoot","Page 3",["Five days later, I see something small and green in the soil. It is a tiny shoot! My seed is growing!","I am so happy. I call Grandma. She comes outside and looks. 'Wonderful!' she says. 'Your plant is alive!'","I water the shoot gently. I talk to it too. Grandma laughs and says that plants like to hear kind words."]),
+      makePage("Sunshine and Rain","Page 4",["Some days are sunny. The plant grows taller on sunny days. I can see new leaves. They are bright green.","One day, it rains a lot. I do not go outside. I watch from the window. The rain waters the garden for me.","After the rain, everything looks clean and fresh. There are little drops on the leaves. They look like diamonds."]),
+      makePage("The Worm Helper","Page 5",["I dig near my plant one day. I find a pink worm! I am surprised. I pick it up carefully.","Grandma says, 'Worms are good for the garden. They make the soil soft and healthy.' I put the worm back.","Now I am not scared of worms. I know they are helpers. The garden needs them to be healthy and strong."]),
+      makePage("My Plant Gets a Flower","Page 6",["After three weeks, my plant has a flower! It is yellow and round. It is a sunflower. I am very proud.","Grandma takes a photo of me and my sunflower. I smile a big smile. My flower is taller than me now!","The bees love my flower. They fly around it and collect pollen. Grandma says bees are very important."]),
+      makePage("Vegetables Too","Page 7",["Grandma also grows vegetables in another part of the garden. There are tomatoes, carrots, and beans.","The tomatoes are red and round. I pick one and taste it. It is sweet. 'This is from my garden!' I think.","Grandma says vegetables from gardens taste better than vegetables from shops. I agree with her."]),
+      makePage("A Butterfly Visits","Page 8",["One morning, a beautiful butterfly comes to the garden. It has orange and black wings. It sits on a flower.","I stand very still. I do not want to scare it. The butterfly stays for a long time. Then it flies away slowly.","I draw the butterfly in my notebook. I color it orange and black. It is my favorite drawing this summer."]),
+      makePage("Harvest Day","Page 9",["In August, Grandma says it is harvest day. We pick all the ripe vegetables and fruits from the garden.","I pick red tomatoes and yellow beans. My basket is full. Grandma picks the big orange pumpkins.","We bring everything inside. The kitchen table is full of colors. It looks like a painting. I feel very proud."]),
+      makePage("A Garden Lesson","Page 10",["Before I go home, Grandma says, 'What did you learn this summer?' I think for a moment.","'I learned that plants need water and sun. I learned that worms and bees help the garden. And I learned to be patient,' I say.","Grandma hugs me. 'You are a true gardener,' she says. I smile. Next summer, I will plant more seeds. Maybe tomatoes!"]),
+    ],
+    quiz:[
+      {q:"Where is Grandma's garden?",opts:["In front of the house","Behind the house","Next to the school","In the park"],correct:1},
+      {q:"What color is the watering can?",opts:["Red","Yellow","Blue","Green"],correct:2},
+      {q:"What kind of plant grows from Tom's seed?",opts:["Rose","Sunflower","Tulip","Daisy"],correct:1},
+      {q:"What do worms do for the garden?",opts:["Eat the plants","Make the soil soft","Scare the bees","Drink the water"],correct:1},
+      {q:"What color is the butterfly?",opts:["Blue and white","Red and green","Orange and black","Yellow and purple"],correct:2},
+      {q:"When is harvest day?",opts:["July","August","September","October"],correct:1},
+      {q:"What vegetable does the narrator pick?",opts:["Carrots","Beans and tomatoes","Pumpkins","Potatoes"],correct:1},
+      {q:"Why does Grandma say bees are important?",opts:["They make honey","They collect pollen","They water plants","They scare birds"],correct:1},
+      {q:"What does the narrator draw in their notebook?",opts:["A sunflower","A worm","A butterfly","A tomato"],correct:2},
+      {q:"What does the narrator plan to plant next summer?",opts:["Flowers","More sunflowers","Maybe tomatoes","Nothing"],correct:2},
+    ],
+    fill:[
+      {sentence:"Seeds need ___ and sunlight to grow.",answer:"water"},
+      {sentence:"My plant has a ___ flower, it is a sunflower.",answer:"yellow"},
+      {sentence:"Worms make the soil soft and ___.",answer:"healthy"},
+      {sentence:"The butterfly has orange and ___ wings.",answer:"black"},
+      {sentence:"In August, it is ___ day.",answer:"harvest"},
+    ],
+    match:[
+      {word:"soil",def:"earth where plants grow"},
+      {word:"shoot",def:"first growth from a seed"},
+      {word:"harvest",def:"time to collect crops"},
+      {word:"pollen",def:"yellow powder in flowers"},
+      {word:"pumpkin",def:"large orange vegetable"},
+    ],
+    drag:[
+      {words:["plants","need","water","and","sun"],correct:"plants need water and sun"},
+      {words:["Worms","are","good","for","the","garden"],correct:"Worms are good for the garden"},
+    ],
+    memory:[
+      {word:"seed",def:"small thing that grows into a plant"},
+      {word:"watering can",def:"container for watering plants"},
+      {word:"sunflower",def:"tall yellow flower"},
+      {word:"butterfly",def:"insect with colorful wings"},
+      {word:"tomato",def:"red round vegetable"},
+      {word:"harvest",def:"collecting ripe crops"},
+    ]
+  },
+  // Books 3-20 for A1 (generated safely now)
+  {title:"The Friendly Dog",genre:"Pets",pages:generatePages("A1",3),quiz:generateQuiz("A1",3),fill:generateFill("A1",3),match:generateMatch("A1",3),drag:generateDrag("A1",3),memory:generateMemory("A1",3)},
+  {title:"At the Market",genre:"Community",pages:generatePages("A1",4),quiz:generateQuiz("A1",4),fill:generateFill("A1",4),match:generateMatch("A1",4),drag:generateDrag("A1",4),memory:generateMemory("A1",4)},
+  {title:"Colors Around Me",genre:"Art",pages:generatePages("A1",5),quiz:generateQuiz("A1",5),fill:generateFill("A1",5),match:generateMatch("A1",5),drag:generateDrag("A1",5),memory:generateMemory("A1",5)},
+  {title:"My Family",genre:"Family",pages:generatePages("A1",6),quiz:generateQuiz("A1",6),fill:generateFill("A1",6),match:generateMatch("A1",6),drag:generateDrag("A1",6),memory:generateMemory("A1",6)},
+  {title:"A Trip to the Zoo",genre:"Adventure",pages:generatePages("A1",7),quiz:generateQuiz("A1",7),fill:generateFill("A1",7),match:generateMatch("A1",7),drag:generateDrag("A1",7),memory:generateMemory("A1",7)},
+  {title:"Weather Every Day",genre:"Science",pages:generatePages("A1",8),quiz:generateQuiz("A1",8),fill:generateFill("A1",8),match:generateMatch("A1",8),drag:generateDrag("A1",8),memory:generateMemory("A1",8)},
+  {title:"The Magic Box",genre:"Fantasy",pages:generatePages("A1",9),quiz:generateQuiz("A1",9),fill:generateFill("A1",9),match:generateMatch("A1",9),drag:generateDrag("A1",9),memory:generateMemory("A1",9)},
+  {title:"My Birthday Party",genre:"Celebration",pages:generatePages("A1",10),quiz:generateQuiz("A1",10),fill:generateFill("A1",10),match:generateMatch("A1",10),drag:generateDrag("A1",10),memory:generateMemory("A1",10)},
+  {title:"The Lost Kitten",genre:"Animals",pages:generatePages("A1",11),quiz:generateQuiz("A1",11),fill:generateFill("A1",11),match:generateMatch("A1",11),drag:generateDrag("A1",11),memory:generateMemory("A1",11)},
+  {title:"A Rainy Day",genre:"Daily Life",pages:generatePages("A1",12),quiz:generateQuiz("A1",12),fill:generateFill("A1",12),match:generateMatch("A1",12),drag:generateDrag("A1",12),memory:generateMemory("A1",12)},
+  {title:"The Beach Holiday",genre:"Travel",pages:generatePages("A1",13),quiz:generateQuiz("A1",13),fill:generateFill("A1",13),match:generateMatch("A1",13),drag:generateDrag("A1",13),memory:generateMemory("A1",13)},
+  {title:"Making a Cake",genre:"Food",pages:generatePages("A1",14),quiz:generateQuiz("A1",14),fill:generateFill("A1",14),match:generateMatch("A1",14),drag:generateDrag("A1",14),memory:generateMemory("A1",14)},
+  {title:"A New Friend",genre:"Friendship",pages:generatePages("A1",15),quiz:generateQuiz("A1",15),fill:generateFill("A1",15),match:generateMatch("A1",15),drag:generateDrag("A1",15),memory:generateMemory("A1",15)},
+  {title:"The Toy Robot",genre:"Technology",pages:generatePages("A1",16),quiz:generateQuiz("A1",16),fill:generateFill("A1",16),match:generateMatch("A1",16),drag:generateDrag("A1",16),memory:generateMemory("A1",16)},
+  {title:"Seasons Change",genre:"Nature",pages:generatePages("A1",17),quiz:generateQuiz("A1",17),fill:generateFill("A1",17),match:generateMatch("A1",17),drag:generateDrag("A1",17),memory:generateMemory("A1",17)},
+  {title:"At the Library",genre:"Education",pages:generatePages("A1",18),quiz:generateQuiz("A1",18),fill:generateFill("A1",18),match:generateMatch("A1",18),drag:generateDrag("A1",18),memory:generateMemory("A1",18)},
+  {title:"Playing Sports",genre:"Sports",pages:generatePages("A1",19),quiz:generateQuiz("A1",19),fill:generateFill("A1",19),match:generateMatch("A1",19),drag:generateDrag("A1",19),memory:generateMemory("A1",19)},
+  {title:"The Old Lighthouse",genre:"Mystery",pages:generatePages("A1",20),quiz:generateQuiz("A1",20),fill:generateFill("A1",20),match:generateMatch("A1",20),drag:generateDrag("A1",20),memory:generateMemory("A1",20)},
+];
+
+// ─────────────────────────────────────────────────────────────
+//  BUILD ALL BOOKS
 const BOOKS = {
   A1: A1_BOOKS,
   A2: buildLevelBooks('A2'),
